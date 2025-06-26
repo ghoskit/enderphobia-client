@@ -3,7 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Enderphobia Client</title>
-  <style>
+  <style>/* ⬇️ Додай в кінець style */
+    body.light-theme {
+      background: #fdfdfd;
+      color: #333;
+    }
+
+    body.light-theme h1 {
+      color: #6b21a8;
+      text-shadow: none;
+    }
+
+    body.light-theme .menu a,
+    body.light-theme .btn,
+    body.light-theme .left-fixed,
+    body.light-theme .right-fixed,
+    body.light-theme .review {
+      background-color: #eeeeee;
+      color: #333;
+      border-color: #bbb;
+    }
+
+    body.light-theme .menu a:hover,
+    body.light-theme .btn:hover {
+      background-color: #ccc;
+      color: #000;
+    }
+
+    body.light-theme .particles {
+      display: none;
+    }
+
+    body.light-theme footer {
+      color: #666;
+    }
+  </style>
+</head>
     body {
       background: radial-gradient(ellipse at center, #1a001a 0%, #000000 100%);
       color: #c084fc;
@@ -178,6 +213,16 @@
   <h1>🔮 Enderphobia Client 🔮</h1>
   <p>Лучший фри Чит для Minecraft в стиле Энда</p>
 
+
+  <!-- 🔘 Кнопка перемикача теми -->
+<button id="themeToggle" style="position: fixed; top: 20px; right: 20px; background: #a855f7; color: black; border: none; padding: 10px 14px; border-radius: 8px; cursor: pointer; z-index: 1000;">
+  🌙
+</button>
+
+<div class="menu">
+  
+</div>
+
   <div class="menu">
     <a href="#Hud">🌌 Hud</a>
     <a href="#X-ray">🔍 X-ray</a>
@@ -221,4 +266,21 @@
     © 2025 Enderphobia Client. Все права защищены.
   </footer>
 </body>
+  <script>
+  const themeToggle = document.getElementById("themeToggle");
+  const currentTheme = localStorage.getItem("theme");
+
+  if (currentTheme === "light") {
+    document.body.classList.add("light-theme");
+    themeToggle.textContent = "☀️";
+  }
+
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-theme");
+    const isLight = document.body.classList.contains("light-theme");
+    themeToggle.textContent = isLight ? "☀️" : "🌙";
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+  });
+</script>
+
 </html>
