@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Enderphobia Client</title>
+  <style>
+    body {
+      background: radial-gradient(ellipse at center, #1a001a 0%, #000000 100%);
+      color: #c084fc;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 40px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #d946ef;
+      animation: glow 2s infinite;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #9333ea, 0 0 20px #7e22ce; }
+      50% { text-shadow: 0 0 25px #a855f7, 0 0 40px #c084fc; }
+      100% { text-shadow: 0 0 10px #9333ea, 0 0 20px #7e22ce; }
+    }
+
+    .menu {
+      margin: 30px 0;
+    }
+
+    .menu a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      background-color: #2e003e;
+      color: #c084fc;
+      border: 2px solid #a855f7;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .menu a:hover {
+      background-color: #a855f7;
+      color: #000;
+    }
+
+    .btn-main {
+      margin-top: 40px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 35px;
+      font-size: 1.1em;
+      font-weight: bold;
+      background-color: #a855f7;
+      color: black;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #9333ea;
+    }
+
+    section {
+      margin-top: 50px;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    code {
+      background-color: #1a1a1a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #c084fc;
+    }
+
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      z-index: -1;
+      background-image: radial-gradient(circle, #9333ea 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: moveParticles 30s linear infinite;
+      opacity: 0.1;
+    }
+
+    @keyframes moveParticles {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+
+    .left-fixed {
+      position: fixed;
+      left: 0;
+      top: 30%;
+      background: #2a003b;
+      padding: 10px;
+      border-radius: 0 8px 8px 0;
+      z-index: 10;
+    }
+
+    .left-fixed a {
+      display: block;
+      margin: 10px 0;
+      color: #c084fc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .right-fixed {
+      position: fixed;
+      right: 0;
+      top: 40%;
+      background: #2a003b;
+      padding: 10px;
+      border-radius: 8px 0 0 8px;
+      z-index: 10;
+    }
+
+    .right-fixed a {
+      color: #c084fc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Відгуки */
+    #reviews {
+      margin-top: 60px;
+      padding: 20px;
+      background-color: #160022;
+      border: 1px solid #a855f7;
+      border-radius: 12px;
+    }
+
+    .review {
+      text-align: left;
+      margin: 15px auto;
+      max-width: 600px;
+      background: #2e003e;
+      padding: 12px;
+      border-radius: 8px;
+      color: #e5d0ff;
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+    }
+
+    .review strong {
+      color: #c084fc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles"></div>
+
+  <div class="left-fixed">
+    <a href="#xray">🔍 X-Ray</a>
+    <a href="#killaura">⚔️ KillAura</a>
+    <a href="#install">📥 Установка</a>
+  </div>
+
+  <div class="right-fixed">
+    <a href="https://t.me/+RtoCJ6Uhc0NlNDUy" target="_blank">🤖 Чат Читеров</a>
+  </div>
+
+  <h1>🔮 Enderphobia Client 🔮</h1>
+  <p>Лучший фри Чит для Minecraft в стиле Энда</p>
+
+  <div class="menu">
+    <a href="#Hud">🌌 Hud</a>
+    <a href="#X-ray">🔍 X-ray</a>
+    <a href="#killaura">⚔️ KillAura</a>
+  </div>
+
+  <div class="btn-main">
+    <a class="btn" href="https://t.me/Enderphobia_bustBot" target="_blank">⬇️ Скачать Чит</a>
+    <a class="btn" href="https://t.me/ghostikll" target="_blank">🤖 Вопросы</a>
+  </div>
+<section id="xray">
+    <h2>🔍 X-Ray</h2>
+    <p>Находит алмазы и незеритовые обломки. Работает на популярных серверах с античитом.</p>
+  </section>
+
+  <section id="fly">
+    <h2>🌌 Hud</h2>
+    <p>Футуристичный стиль интерфейса, вдохновлённый Эндом. Очень красивые визуалы 💜</p>
+  </section>
+
+  <section id="killaura">
+    <h2>⚔️ KillAura</h2>
+    <p>Мощный модуль атаки. Хорошо обходит античиты и бьёт врагов автоматически.</p>
+  </section>
+
+  <section id="install">
+    <h2>📥 Как установить чит?</h2>
+    <p>
+      1️⃣ Скачай чит по кнопке выше.<br>
+      2️⃣ Скачай легаси лаунчер и поставь 17 джаву</code>.<br>
+      3️⃣ Выдели 5 и больше гб оператывной памяти(Если не работает пиши в поддержку).<br>
+      4️⃣ Готово — наслаждайся Enderphobia! 😎
+    </p>
+  </section>
+
+  
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Enderphobia Client. Все права защищены.
+  </footer>
+</body>
+</html>
