@@ -1,44 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Enderphobia Client</title>
-  <style>/* ⬇️ Додай в кінець style */
-    body.light-theme {
-      background: #fdfdfd;
-      color: #333;
-    }
-
-    body.light-theme h1 {
-      color: #6b21a8;
-      text-shadow: none;
-    }
-
-    body.light-theme .menu a,
-    body.light-theme .btn,
-    body.light-theme .left-fixed,
-    body.light-theme .right-fixed,
-    body.light-theme .review {
-      background-color: #eeeeee;
-      color: #333;
-      border-color: #bbb;
-    }
-
-    body.light-theme .menu a:hover,
-    body.light-theme .btn:hover {
-      background-color: #ccc;
-      color: #000;
-    }
-
-    body.light-theme .particles {
-      display: none;
-    }
-
-    body.light-theme footer {
-      color: #666;
-    }
-  </style>
-</head>
+  <style>
     body {
       background: radial-gradient(ellipse at center, #1a001a 0%, #000000 100%);
       color: #c084fc;
@@ -46,6 +12,24 @@
       text-align: center;
       padding: 40px;
       overflow-x: hidden;
+      cursor: url('cursor1.png'), auto; /* дефолтний */
+    }
+
+    /* Стилі для 5 курсорів (підключаємо локальні або онлайн картинки) */
+    body.cursor1 {
+      cursor: url('https://i.imgur.com/G3d6i67.png'), auto;
+    }
+    body.cursor2 {
+      cursor: url('https://i.imgur.com/yjQZn0Q.png'), auto;
+    }
+    body.cursor3 {
+      cursor: url('https://i.imgur.com/fUexIhS.png'), auto;
+    }
+    body.cursor4 {
+      cursor: url('https://i.imgur.com/ClPOy5O.png'), auto;
+    }
+    body.cursor5 {
+      cursor: url('https://i.imgur.com/O4FCQGu.png'), auto;
     }
 
     h1 {
@@ -55,25 +39,35 @@
     }
 
     @keyframes glow {
-      0% { text-shadow: 0 0 10px #9333ea, 0 0 20px #7e22ce; }
-      50% { text-shadow: 0 0 25px #a855f7, 0 0 40px #c084fc; }
-      100% { text-shadow: 0 0 10px #9333ea, 0 0 20px #7e22ce; }
+      0% {
+        text-shadow: 0 0 10px #9333ea, 0 0 20px #7e22ce;
+      }
+      50% {
+        text-shadow: 0 0 25px #a855f7, 0 0 40px #c084fc;
+      }
+      100% {
+        text-shadow: 0 0 10px #9333ea, 0 0 20px #7e22ce;
+      }
     }
 
-    .menu {
-      margin: 30px 0;
-    }
-
-    .menu a {
+    .menu a,
+    .btn {
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
       display: inline-block;
       margin: 10px;
       padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .menu a {
       background-color: #2e003e;
       color: #c084fc;
       border: 2px solid #a855f7;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.3s;
     }
 
     .menu a:hover {
@@ -81,26 +75,26 @@
       color: #000;
     }
 
-    .btn-main {
-      margin-top: 40px;
-    }
-
     .btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 15px 35px;
       font-size: 1.1em;
-      font-weight: bold;
       background-color: #a855f7;
       color: black;
       border: none;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: 0.3s;
+      padding: 15px 35px;
     }
 
     .btn:hover {
       background-color: #9333ea;
+    }
+
+    .btn:active,
+    .menu a:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-main {
+      margin-top: 40px;
     }
 
     section {
@@ -124,7 +118,8 @@
       position: fixed;
       width: 100%;
       height: 100%;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       z-index: -1;
       background-image: radial-gradient(circle, #9333ea 1px, transparent 1px);
       background-size: 20px 20px;
@@ -133,8 +128,12 @@
     }
 
     @keyframes moveParticles {
-      from { background-position: 0 0; }
-      to { background-position: 1000px 1000px; }
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 1000px 1000px;
+      }
     }
 
     .left-fixed {
@@ -171,7 +170,6 @@
       font-weight: bold;
     }
 
-    /* Відгуки */
     #reviews {
       margin-top: 60px;
       padding: 20px;
@@ -194,10 +192,153 @@
     .review strong {
       color: #c084fc;
     }
+
+    /* Кнопка переключения темы */
+    #themeToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #a855f7;
+      color: black;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1001;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      user-select: none;
+      transition: background-color 0.3s ease;
+      margin-right: 50px; /* немного сместить чтобы место для курсора было */
+    }
+
+    #themeToggle:hover {
+      background-color: #9333ea;
+      color: white;
+    }
+
+    /* Загрузочный индикатор */
+    .loader {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      color: #a855f7;
+      animation: blink 1s infinite;
+      user-select: none;
+    }
+
+    @keyframes blink {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    /* Кнопка выбора курсора */
+    #cursorSelectorBtn {
+      position: fixed;
+      top: 20px;
+      right: 0px;
+      background: #7e22ce;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px 0 0 8px;
+      cursor: pointer;
+      z-index: 1002;
+      font-size: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    #cursorSelectorBtn:hover {
+      background-color: #a855f7;
+    }
+
+    /* Панель выбора курсора */
+    #cursorSelector {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      background: #2a003b;
+      padding: 10px;
+      border-radius: 8px 0 0 8px;
+      z-index: 1002;
+      display: none;
+      width: 150px;
+      box-shadow: 0 0 15px #a855f7;
+    }
+
+    #cursorSelector h3 {
+      margin: 5px 0 10px;
+      color: #c084fc;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .cursor-option {
+      width: 32px;
+      height: 32px;
+      margin: 6px;
+      display: inline-block;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: border-color 0.3s ease;
+    }
+
+    .cursor-option:hover {
+      border-color: #a855f7;
+    }
+
+    .cursor-option.selected {
+      border-color: #d946ef;
+    }
+
+    /* Светлая тема */
+    body.light-theme {
+      background: #fdfdfd;
+      color: #333;
+      cursor: auto;
+    }
+
+    body.light-theme h1 {
+      color: #6b21a8;
+      text-shadow: none;
+    }
+
+    body.light-theme .menu a,
+    body.light-theme .btn,
+    body.light-theme .left-fixed,
+    body.light-theme .right-fixed,
+    body.light-theme .review {
+      background-color: #eeeeee;
+      color: #333;
+      border-color: #bbb;
+    }
+
+    body.light-theme .menu a:hover,
+    body.light-theme .btn:hover {
+      background-color: #ccc;
+      color: #000;
+    }
+
+    body.light-theme .particles {
+      display: none;
+    }
+
+    body.light-theme footer {
+      color: #666;
+    }
+
   </style>
 </head>
 <body>
-
   <div class="particles"></div>
 
   <div class="left-fixed">
@@ -210,18 +351,27 @@
     <a href="https://t.me/+RtoCJ6Uhc0NlNDUy" target="_blank">🤖 Чат Читеров</a>
   </div>
 
+  <!-- Кнопка переключения темы -->
+  <button id="themeToggle">🌙</button>
+
+  <!-- Кнопка выбора курсора -->
+  <button id="cursorSelectorBtn" title="Выбрать курсор">🖱️</button>
+
+  <!-- Панель выбора курсора -->
+  <div id="cursorSelector">
+    <h3>Выберите курсор</h3>
+    <div class="cursor-option cursor1" data-cursor="cursor1" style="background-image:url('https://i.imgur.com/G3d6i67.png')"></div>
+    <div class="cursor-option cursor2" data-cursor="cursor2" style="background-image:url('https://i.imgur.com/yjQZn0Q.png')"></div>
+    <div class="cursor-option cursor3" data-cursor="cursor3" style="background-image:url('https://i.imgur.com/fUexIhS.png')"></div>
+    <div class="cursor-option cursor4" data-cursor="cursor4" style="background-image:url('https://i.imgur.com/ClPOy5O.png')"></div>
+    <div class="cursor-option cursor5" data-cursor="cursor5" style="background-image:url('https://i.imgur.com/O4FCQGu.png')"></div>
+  </div>
+
   <h1>🔮 Enderphobia Client 🔮</h1>
   <p>Лучший фри Чит для Minecraft в стиле Энда</p>
 
-
-  <!-- 🔘 Кнопка перемикача теми -->
-<button id="themeToggle" style="position: fixed; top: 20px; right: 20px; background: #a855f7; color: black; border: none; padding: 10px 14px; border-radius: 8px; cursor: pointer; z-index: 1000;">
-  🌙
-</button>
-
-<div class="menu">
-  
-</div>
+  <!-- Загрузочный индикатор -->
+  <div class="loader">Загрузка интерфейса...</div>
 
   <div class="menu">
     <a href="#Hud">🌌 Hud</a>
@@ -233,7 +383,8 @@
     <a class="btn" href="https://t.me/Enderphobia_bustBot" target="_blank">⬇️ Скачать Чит</a>
     <a class="btn" href="https://t.me/ghostikll" target="_blank">🤖 Вопросы</a>
   </div>
-<section id="xray">
+
+  <section id="xray">
     <h2>🔍 X-Ray</h2>
     <p>Находит алмазы и незеритовые обломки. Работает на популярных серверах с античитом.</p>
   </section>
@@ -251,36 +402,80 @@
   <section id="install">
     <h2>📥 Как установить чит?</h2>
     <p>
-      1️⃣ Скачай чит по кнопке выше.<br>
-      2️⃣ Скачай легаси лаунчер и поставь 17 джаву</code>.<br>
-      3️⃣ Выдели 5 и больше гб оператывной памяти(Если не работает пиши в поддержку).<br>
+      1️⃣ Скачай чит по кнопке выше.<br />
+      2️⃣ Скачай легаси лаунчер и поставь 17 джаву.<br />
+      3️⃣ Выдели 5 и больше гб оператывной памяти (Если не работает — пиши в поддержку).<br />
       4️⃣ Готово — наслаждайся Enderphobia! 😎
     </p>
   </section>
 
-  
-    </div>
-  </section>
+  <footer>© 2025 Enderphobia Client. Все права защищены.</footer>
 
-  <footer>
-    © 2025 Enderphobia Client. Все права защищены.
-  </footer>
-</body>
   <script>
-  const themeToggle = document.getElementById("themeToggle");
-  const currentTheme = localStorage.getItem("theme");
+    // Переключатель темы
+    const themeToggle = document.getElementById("themeToggle");
+    const currentTheme = localStorage.getItem("theme");
 
-  if (currentTheme === "light") {
-    document.body.classList.add("light-theme");
-    themeToggle.textContent = "☀️";
-  }
+    if (currentTheme === "light") {
+      document.body.classList.add("light-theme");
+      themeToggle.textContent = "☀️";
+    }
 
-  themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("light-theme");
-    const isLight = document.body.classList.contains("light-theme");
-    themeToggle.textContent = isLight ? "☀️" : "🌙";
-    localStorage.setItem("theme", isLight ? "light" : "dark");
-  });
-</script>
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-theme");
+      const isLight = document.body.classList.contains("light-theme");
+      themeToggle.textContent = isLight ? "☀️" : "🌙";
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    });
 
+    // Загрузочный индикатор
+    window.addEventListener("load", () => {
+      const loader = document.querySelector(".loader");
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 2000);
+    });
+
+    // Логика выбора курсора
+    const cursorSelectorBtn = document.getElementById("cursorSelectorBtn");
+    const cursorSelector = document.getElementById("cursorSelector");
+    const cursorOptions = document.querySelectorAll(".cursor-option");
+
+    // Показываем/скрываем панель выбора курсора
+    cursorSelectorBtn.addEventListener("click", () => {
+      cursorSelector.style.display =
+        cursorSelector.style.display === "block" ? "none" : "block";
+    });
+
+    // Загрузка сохраненного курсора
+    const savedCursor = localStorage.getItem("selectedCursor");
+    if (savedCursor) {
+      document.body.classList.add(savedCursor);
+      cursorOptions.forEach((opt) => {
+        if (opt.dataset.cursor === savedCursor) {
+          opt.classList.add("selected");
+        }
+      });
+    }
+
+    // Обработка выбора курсора
+    cursorOptions.forEach((opt) => {
+      opt.addEventListener("click", () => {
+        // Убираем класс у всех
+        cursorOptions.forEach((o) => o.classList.remove("selected"));
+        // Добавляем класс выбранному
+        opt.classList.add("selected");
+
+        // Убираем предыдущие cursorN классы
+        document.body.classList.remove("cursor1", "cursor2", "cursor3", "cursor4", "cursor5");
+        // Добавляем выбранный
+        document.body.classList.add(opt.dataset.cursor);
+
+        // Сохраняем выбор
+        localStorage.setItem("selectedCursor", opt.dataset.cursor);
+      });
+    });
+  </script>
+</body>
 </html>
+
